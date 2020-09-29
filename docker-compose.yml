@@ -16,6 +16,8 @@ services:
       - DB_SSLMODE=disable
     links:
       - db
+    depends_on:
+      - db
   db:
     image: postgres:12.4
     volumes:

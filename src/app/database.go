@@ -6,6 +6,7 @@ import (
 	"github.com/jackc/pgx/v4/pgxpool"
 	"log"
 	"os"
+	"time"
 )
 
 func ConnectDb() *pgxpool.Pool {
@@ -21,7 +22,9 @@ func ConnectDb() *pgxpool.Pool {
 
 	conn, err := pgxpool.Connect(context.Background(), dbURL)
 	if err != nil {
-		log.Fatal(os.Stderr, "Unable to connect to database: %v\n", err)
+		log.Print(os.Stderr, "Unable to connect to database: %v\n", err)
+		time.Sleep(5 * time.Second)
+		return ConnectDb()
 	}
 
 	initDb(conn)
