@@ -9,8 +9,8 @@ import (
 )
 
 type App struct {
-	Router       *mux.Router
-	Name         string
+	Router *mux.Router
+	Name   string
 }
 
 func NewApp(name string) App {
@@ -25,10 +25,10 @@ func (a *App) Run(addr string) {
 	log.Print("Starting server...")
 
 	srv := &http.Server{
-		ReadTimeout: 5 * time.Second,
+		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
-		Addr: addr,
-		Handler: a.Router,
+		Addr:         addr,
+		Handler:      a.Router,
 	}
 
 	err := srv.ListenAndServe()

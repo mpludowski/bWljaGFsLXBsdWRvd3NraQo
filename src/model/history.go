@@ -8,10 +8,10 @@ import (
 )
 
 type HistoryRecord struct {
-	Id string `json:"-"`
-	UrlId string `json:"-"`
-	Response *string `json:"response"`
-	Duration float32 `json:"duration"`
+	Id        string    `json:"-"`
+	UrlId     string    `json:"-"`
+	Response  *string   `json:"response"`
+	Duration  float32   `json:"duration"`
 	CreatedAt time.Time `json:"created_at"`
 }
 
@@ -45,7 +45,7 @@ func GetHistory(id string) []HistoryRecord {
 	var row HistoryRecord
 	defer rows.Close()
 	for rows.Next() {
-		if err := rows.Scan(&row.Id, &row.UrlId, &row.Response, &row.Duration , &row.CreatedAt); err != nil {
+		if err := rows.Scan(&row.Id, &row.UrlId, &row.Response, &row.Duration, &row.CreatedAt); err != nil {
 			log.Panic(err)
 		}
 		if respValue := *row.Response; respValue == "" {

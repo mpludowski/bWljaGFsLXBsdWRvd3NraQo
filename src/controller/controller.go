@@ -2,12 +2,13 @@ package controller
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
-	"github.com/mpludowski/bWljaGFsLXBsdWRvd3NraQo/model"
-	"github.com/mpludowski/bWljaGFsLXBsdWRvd3NraQo/worker"
 	"io/ioutil"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/mpludowski/bWljaGFsLXBsdWRvd3NraQo/model"
+	"github.com/mpludowski/bWljaGFsLXBsdWRvd3NraQo/worker"
 )
 
 type idResponse struct {
@@ -45,7 +46,7 @@ func DeleteFetcher(w http.ResponseWriter, r *http.Request) {
 
 	model.DeleteUrl(id)
 
-	response, _ := json.Marshal(idResponse {Id: id})
+	response, _ := json.Marshal(idResponse{Id: id})
 	w.Write(response)
 }
 
@@ -76,6 +77,5 @@ func parseRequest(r *http.Request, i interface{}) error {
 	}
 
 	return json.Unmarshal(b, i)
-
 
 }

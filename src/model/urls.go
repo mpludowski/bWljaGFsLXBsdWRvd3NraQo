@@ -9,7 +9,7 @@ import (
 type Url struct {
 	Id       string `json:"id"`
 	Url      string `json:"url"`
-	Interval int `json:"interval"`
+	Interval int    `json:"interval"`
 }
 
 func SaveUrl(url string, interval int) string {

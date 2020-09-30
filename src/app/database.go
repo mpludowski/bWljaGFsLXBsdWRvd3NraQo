@@ -3,10 +3,11 @@ package app
 import (
 	"context"
 	"fmt"
-	"github.com/jackc/pgx/v4/pgxpool"
 	"log"
 	"os"
 	"time"
+
+	"github.com/jackc/pgx/v4/pgxpool"
 )
 
 func ConnectDb() *pgxpool.Pool {
@@ -37,7 +38,7 @@ func CloseDb(conn *pgxpool.Pool) {
 }
 
 func initDb(conn *pgxpool.Pool) {
-	_, err := conn.Query(context.Background(),"SELECT * FROM urls")
+	_, err := conn.Query(context.Background(), "SELECT * FROM urls")
 
 	if err != nil {
 		conn.Exec(

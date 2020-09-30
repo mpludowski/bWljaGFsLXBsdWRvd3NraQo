@@ -1,11 +1,12 @@
 package worker
 
 import (
-	"github.com/mpludowski/bWljaGFsLXBsdWRvd3NraQo/model"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/mpludowski/bWljaGFsLXBsdWRvd3NraQo/model"
 )
 
 var client = &http.Client{

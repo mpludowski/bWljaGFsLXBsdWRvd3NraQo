@@ -1,9 +1,10 @@
 package app
 
 import (
+	"net/http"
+
 	"github.com/gorilla/mux"
 	"github.com/mpludowski/bWljaGFsLXBsdWRvd3NraQo/controller"
-	"net/http"
 )
 
 func setupRoutes() *mux.Router {
@@ -20,7 +21,7 @@ func setupRoutes() *mux.Router {
 
 func sizeLimitMiddleware(f http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		r.Body = http.MaxBytesReader(w, r.Body, 1 * 1024 * 1024) // 1 MB
+		r.Body = http.MaxBytesReader(w, r.Body, 1*1024*1024) // 1 MB
 		f(w, r)
 	}
 }
